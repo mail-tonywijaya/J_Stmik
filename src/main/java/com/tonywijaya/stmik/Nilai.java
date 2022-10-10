@@ -63,6 +63,11 @@ public class Nilai
     
     public void hitungNilai()
     {
+        System.out.println("_presensi : " + _presensi);
+        System.out.println("_tugasTerstruktur : " + _tugasTerstruktur);
+        System.out.println("_uts : " + _uts);
+        System.out.println("_uas : " + _uas);
+        
         _totalNilai = _presensi + _tugasTerstruktur + _uts + _uas;
         
         if (_totalNilai >= 80)
