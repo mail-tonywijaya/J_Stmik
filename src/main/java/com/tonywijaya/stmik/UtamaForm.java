@@ -35,6 +35,11 @@ public class UtamaForm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("STMIK Pontianak");
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
@@ -101,6 +106,18 @@ public class UtamaForm extends javax.swing.JFrame {
         nif.setVisible(true);
     }//GEN-LAST:event_nilaiMenuItemActionPerformed
 
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        this.setExtendedState(this.getExtendedState() | javax.swing.JFrame.MAXIMIZED_BOTH);
+        
+        LoginDialog ld = new LoginDialog(this, true);
+        ld.setVisible(true);
+        
+        if (!ld.isIsLoginOk())
+        {
+            System.exit(0);
+        }
+    }//GEN-LAST:event_formComponentShown
+
     /**
      * @param args the command line arguments
      */
@@ -144,4 +161,5 @@ public class UtamaForm extends javax.swing.JFrame {
     private javax.swing.JMenuItem keluarMenuItem;
     private javax.swing.JMenuItem nilaiMenuItem;
     // End of variables declaration//GEN-END:variables
+
 }
