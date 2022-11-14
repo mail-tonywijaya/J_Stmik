@@ -4,7 +4,18 @@
  */
 package com.tonywijaya.stmik;
 
+import com.loopj.android.http.AsyncHttpClient;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 /**
  *
@@ -57,8 +68,6 @@ public class LoginDialog extends javax.swing.JDialog
 
         jLabel3.setDisplayedMnemonic('P');
         jLabel3.setText("Password");
-
-        passwordText.setText("jPasswordField1");
 
         loginButton.setText("LOG IN");
         loginButton.addActionListener(new java.awt.event.ActionListener() {
@@ -117,15 +126,38 @@ public class LoginDialog extends javax.swing.JDialog
         
         this._isLoginOk = false;
         
+        // Ini komentar 1 baris
+
+        /*
+
+        Ini komentar multi-baris
+
+        */
+
+        /*
         if (!userId.equals("andi") || !password.equals("123"))
         {
-            JOptionPane.showMessageDialog(rootPane, "User id atau password tidak cocok", "Peringatan", JOptionPane.ERROR_MESSAGE);
-            return;
+        JOptionPane.showMessageDialog(rootPane, "User id atau password tidak cocok", "Peringatan", JOptionPane.ERROR_MESSAGE);
+        return;
         }
+        */
+
+        WebApi wa = new WebApi();
         
-        this._isLoginOk = true;
-        this.setVisible(false);
-        this.dispose();
+        String url = "https://stmikpontianak.net/011100862/login.php?id=" + userId + "&password=" + password;
+        wa.setUrl(url);
+        
+        wa.get();
+        
+        String json_string = wa.getJson_string();
+        JOptionPane.showMessageDialog(rootPane, json_string, "Info", JOptionPane.INFORMATION_MESSAGE);
+        
+        JSONArray json_array = wa.getJson_array();
+        JSONObject json = json_array[0];
+        
+        //this._isLoginOk = true;
+        //this.setVisible(false);
+        //this.dispose();
     }//GEN-LAST:event_loginButtonActionPerformed
 
     /**
