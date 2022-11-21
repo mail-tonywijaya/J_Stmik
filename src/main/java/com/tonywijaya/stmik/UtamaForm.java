@@ -32,6 +32,7 @@ public class UtamaForm extends javax.swing.JFrame {
         keluarMenuItem = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         nilaiMenuItem = new javax.swing.JMenuItem();
+        mahasiswaMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("STMIK Pontianak");
@@ -78,6 +79,15 @@ public class UtamaForm extends javax.swing.JFrame {
         });
         jMenu2.add(nilaiMenuItem);
 
+        mahasiswaMenuItem.setMnemonic('M');
+        mahasiswaMenuItem.setText("Mahasiswa");
+        mahasiswaMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mahasiswaMenuItemActionPerformed(evt);
+            }
+        });
+        jMenu2.add(mahasiswaMenuItem);
+
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -117,6 +127,12 @@ public class UtamaForm extends javax.swing.JFrame {
             System.exit(0);
         }
     }//GEN-LAST:event_formComponentShown
+
+    private void mahasiswaMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mahasiswaMenuItemActionPerformed
+        MahasiswaInternalFrame mif = new MahasiswaInternalFrame();
+        jDesktopPane1.add(mif);
+        mif.setVisible(true);
+    }//GEN-LAST:event_mahasiswaMenuItemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -159,6 +175,7 @@ public class UtamaForm extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem keluarMenuItem;
+    private javax.swing.JMenuItem mahasiswaMenuItem;
     private javax.swing.JMenuItem nilaiMenuItem;
     // End of variables declaration//GEN-END:variables
 

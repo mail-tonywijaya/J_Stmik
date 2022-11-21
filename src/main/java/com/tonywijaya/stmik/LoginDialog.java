@@ -145,19 +145,31 @@ public class LoginDialog extends javax.swing.JDialog
         WebApi wa = new WebApi();
         
         String url = "https://stmikpontianak.net/011100862/login.php?id=" + userId + "&password=" + password;
+        //System.out.println(url);
         wa.setUrl(url);
         
         wa.get();
         
-        String json_string = wa.getJson_string();
-        JOptionPane.showMessageDialog(rootPane, json_string, "Info", JOptionPane.INFORMATION_MESSAGE);
+        //String json_string = wa.getJson_string();
+        //JOptionPane.showMessageDialog(rootPane, json_string, "Info", JOptionPane.INFORMATION_MESSAGE);
         
         JSONArray json_array = wa.getJson_array();
-        JSONObject json = json_array[0];
+        JSONObject record = json_array.getJSONObject(0);
+        //System.out.println(json.toString());
         
-        //this._isLoginOk = true;
-        //this.setVisible(false);
-        //this.dispose();
+        int idCount = record.getInt("idCount");
+        //System.out.println("idCount : " + idCount);
+        
+        if (idCount == 1)
+        {
+            this._isLoginOk = true;
+            this.setVisible(false);
+            this.dispose();
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(rootPane, "User ID atau password tidak cocok", "Peringatan", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_loginButtonActionPerformed
 
     /**

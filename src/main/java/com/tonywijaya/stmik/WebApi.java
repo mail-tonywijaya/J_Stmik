@@ -70,8 +70,6 @@ public class WebApi
             {
                 _json_string += sn.nextLine();
             }
-            
-            
         } 
         catch (MalformedURLException ex) 
         {
