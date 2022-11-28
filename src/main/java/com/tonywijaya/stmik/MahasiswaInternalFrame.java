@@ -4,8 +4,12 @@
  */
 package com.tonywijaya.stmik;
 
+import java.util.Vector;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 /**
  *
@@ -65,19 +69,19 @@ public class MahasiswaInternalFrame extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        jTable1.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 394, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 409, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
         );
 
         pack();
@@ -94,9 +98,15 @@ public class MahasiswaInternalFrame extends javax.swing.JInternalFrame {
         wa.get();
         
         String json_string = wa.getJson_string();
-        System.out.println(json_string);
+        //System.out.println(json_string);
         
         JSONArray json_array = new JSONArray(json_string);
+
+        Mahasiswa m = new Mahasiswa();
+        m.setJson_array(json_array);
+        DefaultTableModel table = m.getDefaultTableModel();
+        
+        jTable1.setModel(table);
     }//GEN-LAST:event_formInternalFrameActivated
 
 
