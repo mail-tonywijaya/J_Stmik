@@ -63,4 +63,9 @@ public class Mahasiswa
         DefaultTableModel table = new DefaultTableModel(rows, columnNames);
         return table;
     }
+    
+    public void Simpan(String nim, String nama, String jenisKelamin, String tempatLahir, String tanggalLahir, String jurusanProdi, String alamat, String statusNikah, int tahunMasuk)
+    {
+        
+    }
 }

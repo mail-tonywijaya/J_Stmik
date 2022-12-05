@@ -66,8 +66,12 @@ public class LoginDialog extends javax.swing.JDialog
         jLabel2.setDisplayedMnemonic('U');
         jLabel2.setText("User ID");
 
+        userIdText.setPreferredSize(new java.awt.Dimension(200, 35));
+
         jLabel3.setDisplayedMnemonic('P');
         jLabel3.setText("Password");
+
+        passwordText.setPreferredSize(new java.awt.Dimension(200, 35));
 
         loginButton.setText("LOG IN");
         loginButton.addActionListener(new java.awt.event.ActionListener() {
@@ -91,7 +95,7 @@ public class LoginDialog extends javax.swing.JDialog
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(passwordText))
+                                .addComponent(passwordText, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addGap(30, 30, 30)
@@ -155,7 +159,7 @@ public class LoginDialog extends javax.swing.JDialog
         
         JSONArray json_array = wa.getJson_array();
         JSONObject record = json_array.getJSONObject(0);
-        //System.out.println(json.toString());
+        //System.out.println(record.toString());
         
         int idCount = record.getInt("idCount");
         //System.out.println("idCount : " + idCount);

@@ -26,13 +26,21 @@ public class UtamaForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         keluarMenuItem = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         nilaiMenuItem = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
         mahasiswaMenuItem = new javax.swing.JMenuItem();
+        tambahMahasiswaMenuItem = new javax.swing.JMenuItem();
+
+        jMenuItem1.setText("jMenuItem1");
+
+        jMenuItem2.setText("jMenuItem2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("STMIK Pontianak");
@@ -78,15 +86,25 @@ public class UtamaForm extends javax.swing.JFrame {
             }
         });
         jMenu2.add(nilaiMenuItem);
+        jMenu2.add(jSeparator1);
 
         mahasiswaMenuItem.setMnemonic('M');
-        mahasiswaMenuItem.setText("Mahasiswa");
+        mahasiswaMenuItem.setText("Tampil Mahasiswa");
         mahasiswaMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mahasiswaMenuItemActionPerformed(evt);
             }
         });
         jMenu2.add(mahasiswaMenuItem);
+
+        tambahMahasiswaMenuItem.setMnemonic('a');
+        tambahMahasiswaMenuItem.setText("Tambah Mahasiswa");
+        tambahMahasiswaMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tambahMahasiswaMenuItemActionPerformed(evt);
+            }
+        });
+        jMenu2.add(tambahMahasiswaMenuItem);
 
         jMenuBar1.add(jMenu2);
 
@@ -134,6 +152,12 @@ public class UtamaForm extends javax.swing.JFrame {
         mif.setVisible(true);
     }//GEN-LAST:event_mahasiswaMenuItemActionPerformed
 
+    private void tambahMahasiswaMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tambahMahasiswaMenuItemActionPerformed
+        TambahMahasiswaInternalFrame tmif = new TambahMahasiswaInternalFrame();
+        jDesktopPane1.add(tmif);
+        tmif.setVisible(true);
+    }//GEN-LAST:event_tambahMahasiswaMenuItemActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -174,9 +198,13 @@ public class UtamaForm extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JMenuItem keluarMenuItem;
     private javax.swing.JMenuItem mahasiswaMenuItem;
     private javax.swing.JMenuItem nilaiMenuItem;
+    private javax.swing.JMenuItem tambahMahasiswaMenuItem;
     // End of variables declaration//GEN-END:variables
 
 }
