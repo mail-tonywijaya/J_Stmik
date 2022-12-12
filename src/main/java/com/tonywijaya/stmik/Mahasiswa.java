@@ -4,7 +4,12 @@
  */
 package com.tonywijaya.stmik;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -64,8 +69,45 @@ public class Mahasiswa
         return table;
     }
     
-    public void Simpan(String nim, String nama, String jenisKelamin, String tempatLahir, String tanggalLahir, String jurusanProdi, String alamat, String statusNikah, int tahunMasuk)
+    public JSONObject Simpan(String nim, String nama, String jenisKelamin, String tempatLahir, String tanggalLahir, String jurusanProdi, String alamat, String statusPernikahan, int tahunMasuk)
     {
+        try 
+        {
+            nim = URLEncoder.encode(nim, StandardCharsets.UTF_8.toString());
+            nama = URLEncoder.encode(nama, StandardCharsets.UTF_8.toString());
+            jenisKelamin = URLEncoder.encode(jenisKelamin, StandardCharsets.UTF_8.toString());
+            tempatLahir = URLEncoder.encode(tempatLahir, StandardCharsets.UTF_8.toString());
+            tanggalLahir = URLEncoder.encode(tanggalLahir, StandardCharsets.UTF_8.toString());
+            jurusanProdi = URLEncoder.encode(jurusanProdi, StandardCharsets.UTF_8.toString());
+            alamat = URLEncoder.encode(alamat, StandardCharsets.UTF_8.toString());
+            statusPernikahan = URLEncoder.encode(statusPernikahan, StandardCharsets.UTF_8.toString());
+        }
+        catch (UnsupportedEncodingException ex) 
+        {
+            Logger.getLogger(Mahasiswa.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
         
+        String url = "https://stmikpontianak.net/011100862/tambahMahasiswa.php" +
+                "?nim=" + nim +
+                "&nama=" + nama +
+                "&jenisKelamin=" + jenisKelamin +
+                "&tempatLahir=" + tempatLahir +
+                "&tanggalLahir=" + tanggalLahir +
+                "&jp=" + jurusanProdi +
+                "&alamat=" + alamat +
+                "&statusPernikahan=" + statusPernikahan +
+                "&tahunMasuk=" + tahunMasuk;
+        //System.out.println(url);
+        
+        WebApi wa = new WebApi();
+        wa.setUrl(url);
+        wa.get();
+        
+        //String json_string = wa.getJson_string();
+        //System.out.println(json_string);
+        
+        JSONObject json = wa.getJson();
+        return json;
     }
 }

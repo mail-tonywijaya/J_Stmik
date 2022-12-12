@@ -5,6 +5,7 @@
 package com.tonywijaya.stmik;
 
 import javax.swing.JOptionPane;
+import org.json.JSONObject;
 
 /**
  *
@@ -43,7 +44,7 @@ public class TambahMahasiswaInternalFrame extends javax.swing.JInternalFrame {
         jLabel7 = new javax.swing.JLabel();
         alamatText = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        jpComboBox1 = new javax.swing.JComboBox<>();
+        statusPernikahanComboBox = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
         tahunMasukSpinner = new javax.swing.JSpinner();
         simpanButton = new javax.swing.JButton();
@@ -98,7 +99,7 @@ public class TambahMahasiswaInternalFrame extends javax.swing.JInternalFrame {
         jLabel8.setDisplayedMnemonic('S');
         jLabel8.setText("Status Nikah");
 
-        jpComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Belum Menikah", "Menikah", "Janda", "Duda" }));
+        statusPernikahanComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Belum Menikah", "Menikah", "Janda", "Duda" }));
 
         jLabel9.setDisplayedMnemonic('h');
         jLabel9.setText("Tahun Masuk");
@@ -134,7 +135,7 @@ public class TambahMahasiswaInternalFrame extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jpComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(statusPernikahanComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(namaText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(nimText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jkComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -185,7 +186,7 @@ public class TambahMahasiswaInternalFrame extends javax.swing.JInternalFrame {
                     .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jpComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(statusPernikahanComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -205,7 +206,6 @@ public class TambahMahasiswaInternalFrame extends javax.swing.JInternalFrame {
 
     private void simpanButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simpanButtonActionPerformed
         String nim = nimText.getText();
-        
         if (nim.length() == 0)
         {
             JOptionPane.showMessageDialog(rootPane, "NIM belum diisi", "Peringatan", JOptionPane.ERROR_MESSAGE);
@@ -213,7 +213,6 @@ public class TambahMahasiswaInternalFrame extends javax.swing.JInternalFrame {
         }
         
         String nama = namaText.getText();
-        
         if (nama.length() == 0)
         {
             JOptionPane.showMessageDialog(rootPane, "Nama belum diisi", "Peringatan", JOptionPane.ERROR_MESSAGE);
@@ -224,7 +223,6 @@ public class TambahMahasiswaInternalFrame extends javax.swing.JInternalFrame {
         //JOptionPane.showMessageDialog(rootPane, "Jenis Kelamin : " + jenisKelamin, "Informasi", JOptionPane.INFORMATION_MESSAGE);
         
         String tempatLahir = tempatLahirText.getText();
-        
         if (tempatLahir.length() == 0)
         {
             JOptionPane.showMessageDialog(rootPane, "Tempat lahir belum diisi", "Peringatan", JOptionPane.ERROR_MESSAGE);
@@ -232,7 +230,6 @@ public class TambahMahasiswaInternalFrame extends javax.swing.JInternalFrame {
         }
         
         String tglLahir = tglLahirText.getText();
-        
         if (tglLahir.length() == 0)
         {
             JOptionPane.showMessageDialog(rootPane, "Tanggal lahir belum diisi", "Peringatan", JOptionPane.ERROR_MESSAGE);
@@ -240,6 +237,30 @@ public class TambahMahasiswaInternalFrame extends javax.swing.JInternalFrame {
         }
         
         String jurusanProdi = jpComboBox.getSelectedItem().toString();
+        
+        String alamat = alamatText.getText();
+        if (alamat.length() == 0)
+        {
+            JOptionPane.showMessageDialog(rootPane, "Alamat belum diisi", "Peringatan", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        String statusPernikahan = statusPernikahanComboBox.getSelectedItem().toString();
+        int tahunMasuk = Integer.valueOf(tahunMasukSpinner.getValue().toString());
+        
+        Mahasiswa m = new Mahasiswa();
+        JSONObject json = m.Simpan(nim, nama, jenisKelamin, tempatLahir, tglLahir, jurusanProdi, alamat, statusPernikahan, tahunMasuk);
+        String status = json.getString("status");
+        String message = json.getString("message");
+        
+        if (status.equals("ok"))
+        {
+            JOptionPane.showMessageDialog(rootPane, message, "Sukses", JOptionPane.INFORMATION_MESSAGE);
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(rootPane, message, "Peringatan", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_simpanButtonActionPerformed
 
 
@@ -256,10 +277,10 @@ public class TambahMahasiswaInternalFrame extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JComboBox<String> jkComboBox;
     private javax.swing.JComboBox<String> jpComboBox;
-    private javax.swing.JComboBox<String> jpComboBox1;
     private javax.swing.JTextField namaText;
     private javax.swing.JTextField nimText;
     private javax.swing.JButton simpanButton;
+    private javax.swing.JComboBox<String> statusPernikahanComboBox;
     private javax.swing.JSpinner tahunMasukSpinner;
     private javax.swing.JTextField tempatLahirText;
     private javax.swing.JTextField tglLahirText;
