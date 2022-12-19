@@ -17,26 +17,11 @@ public class Stmik
     public static void main(String[] args) 
     {
         //System.out.println("Hello World!");
-        
-        try {
-                // Set System L&F
-            UIManager.setLookAndFeel(
-                UIManager.getSystemLookAndFeelClassName());
-        } 
-        catch (UnsupportedLookAndFeelException e) {
-           // handle exception
-        }
-        catch (ClassNotFoundException e) {
-           // handle exception
-        }
-        catch (InstantiationException e) {
-           // handle exception
-        }
-        catch (IllegalAccessException e) {
-           // handle exception
-        }
-
         //new SwingApplication(); //Create and show the GUI.
+        
+        UI ui = new UI();
+        ui.System();
+        //ui.CrossPlatform();
         
         UtamaForm uf = new UtamaForm();
         uf.setVisible(true);

@@ -37,6 +37,8 @@ public class UtamaForm extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         mahasiswaMenuItem = new javax.swing.JMenuItem();
         tambahMahasiswaMenuItem = new javax.swing.JMenuItem();
+        lainLainMenu = new javax.swing.JMenu();
+        forexMenuItem = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -108,6 +110,20 @@ public class UtamaForm extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
+        lainLainMenu.setMnemonic('L');
+        lainLainMenu.setText("Lain-lain");
+
+        forexMenuItem.setMnemonic('F');
+        forexMenuItem.setText("Forex");
+        forexMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                forexMenuItemActionPerformed(evt);
+            }
+        });
+        lainLainMenu.add(forexMenuItem);
+
+        jMenuBar1.add(lainLainMenu);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -158,6 +174,12 @@ public class UtamaForm extends javax.swing.JFrame {
         tmif.setVisible(true);
     }//GEN-LAST:event_tambahMahasiswaMenuItemActionPerformed
 
+    private void forexMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_forexMenuItemActionPerformed
+        ForexInternalFrame fif = new ForexInternalFrame();
+        jDesktopPane1.add(fif);
+        fif.setVisible(true);
+    }//GEN-LAST:event_forexMenuItemActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -194,6 +216,7 @@ public class UtamaForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem forexMenuItem;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
@@ -202,6 +225,7 @@ public class UtamaForm extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JMenuItem keluarMenuItem;
+    private javax.swing.JMenu lainLainMenu;
     private javax.swing.JMenuItem mahasiswaMenuItem;
     private javax.swing.JMenuItem nilaiMenuItem;
     private javax.swing.JMenuItem tambahMahasiswaMenuItem;
