@@ -13,6 +13,12 @@ import java.util.Locale;
  */
 public class Format 
 {
+    public String Angka2Desimal(double angka)
+    {
+        String angka_2 = String.format("%.2f", angka);
+        return angka_2;
+    }
+    
     public String MataUang(double nominal, String bahasa, String negara)
     {
         Locale locale = new Locale(bahasa, negara);      

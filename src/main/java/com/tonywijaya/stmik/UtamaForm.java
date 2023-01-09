@@ -39,6 +39,7 @@ public class UtamaForm extends javax.swing.JFrame {
         tambahMahasiswaMenuItem = new javax.swing.JMenuItem();
         lainLainMenu = new javax.swing.JMenu();
         forexMenuItem = new javax.swing.JMenuItem();
+        cuacaMenuItem = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -122,6 +123,15 @@ public class UtamaForm extends javax.swing.JFrame {
         });
         lainLainMenu.add(forexMenuItem);
 
+        cuacaMenuItem.setMnemonic('C');
+        cuacaMenuItem.setText("Cuaca");
+        cuacaMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cuacaMenuItemActionPerformed(evt);
+            }
+        });
+        lainLainMenu.add(cuacaMenuItem);
+
         jMenuBar1.add(lainLainMenu);
 
         setJMenuBar(jMenuBar1);
@@ -180,6 +190,12 @@ public class UtamaForm extends javax.swing.JFrame {
         fif.setVisible(true);
     }//GEN-LAST:event_forexMenuItemActionPerformed
 
+    private void cuacaMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cuacaMenuItemActionPerformed
+        CuacaInternalFrame cif = new CuacaInternalFrame();
+        jDesktopPane1.add(cif);
+        cif.setVisible(true);
+    }//GEN-LAST:event_cuacaMenuItemActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -216,6 +232,7 @@ public class UtamaForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem cuacaMenuItem;
     private javax.swing.JMenuItem forexMenuItem;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenu jMenu1;
