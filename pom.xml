@@ -12,6 +12,18 @@
             <version>20180130</version>
             <type>jar</type>
         </dependency>
+        <dependency>
+            <groupId>com.loopj.android</groupId>
+            <artifactId>android-async-http</artifactId>
+            <version>1.4.11</version>
+            <type>aar</type>
+            <exclusions>
+                <exclusion>
+                    <groupId>cz.msebera.android</groupId>
+                    <artifactId>httpclient</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
     </dependencies>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
