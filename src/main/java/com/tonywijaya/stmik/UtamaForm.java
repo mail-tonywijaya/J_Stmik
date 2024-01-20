@@ -37,6 +37,8 @@ public class UtamaForm extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         mahasiswaMenuItem = new javax.swing.JMenuItem();
         tambahMahasiswaMenuItem = new javax.swing.JMenuItem();
+        konversiKelvinCelciusMenuItem = new javax.swing.JMenuItem();
+        jSeparator2 = new javax.swing.JPopupMenu.Separator();
         lainLainMenu = new javax.swing.JMenu();
         forexMenuItem = new javax.swing.JMenuItem();
         cuacaMenuItem = new javax.swing.JMenuItem();
@@ -108,6 +110,15 @@ public class UtamaForm extends javax.swing.JFrame {
             }
         });
         jMenu2.add(tambahMahasiswaMenuItem);
+
+        konversiKelvinCelciusMenuItem.setText("Konversi Kelvin ke Celcius");
+        konversiKelvinCelciusMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                konversiKelvinCelciusMenuItemActionPerformed(evt);
+            }
+        });
+        jMenu2.add(konversiKelvinCelciusMenuItem);
+        jMenu2.add(jSeparator2);
 
         jMenuBar1.add(jMenu2);
 
@@ -196,6 +207,12 @@ public class UtamaForm extends javax.swing.JFrame {
         cif.setVisible(true);
     }//GEN-LAST:event_cuacaMenuItemActionPerformed
 
+    private void konversiKelvinCelciusMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_konversiKelvinCelciusMenuItemActionPerformed
+        KonversiKelvinCelciusInternalFrame konversiKC = new KonversiKelvinCelciusInternalFrame();
+        jDesktopPane1.add(konversiKC);
+        konversiKC.setVisible(true);
+    }//GEN-LAST:event_konversiKelvinCelciusMenuItemActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -241,7 +258,9 @@ public class UtamaForm extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JMenuItem keluarMenuItem;
+    private javax.swing.JMenuItem konversiKelvinCelciusMenuItem;
     private javax.swing.JMenu lainLainMenu;
     private javax.swing.JMenuItem mahasiswaMenuItem;
     private javax.swing.JMenuItem nilaiMenuItem;
