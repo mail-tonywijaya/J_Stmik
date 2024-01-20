@@ -37,8 +37,8 @@ public class UtamaForm extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         mahasiswaMenuItem = new javax.swing.JMenuItem();
         tambahMahasiswaMenuItem = new javax.swing.JMenuItem();
-        konversiKelvinCelciusMenuItem = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
+        konversiKelvinCelciusMenuItem = new javax.swing.JMenuItem();
         lainLainMenu = new javax.swing.JMenu();
         forexMenuItem = new javax.swing.JMenuItem();
         cuacaMenuItem = new javax.swing.JMenuItem();
@@ -110,6 +110,7 @@ public class UtamaForm extends javax.swing.JFrame {
             }
         });
         jMenu2.add(tambahMahasiswaMenuItem);
+        jMenu2.add(jSeparator2);
 
         konversiKelvinCelciusMenuItem.setText("Konversi Kelvin ke Celcius");
         konversiKelvinCelciusMenuItem.addActionListener(new java.awt.event.ActionListener() {
@@ -118,7 +119,6 @@ public class UtamaForm extends javax.swing.JFrame {
             }
         });
         jMenu2.add(konversiKelvinCelciusMenuItem);
-        jMenu2.add(jSeparator2);
 
         jMenuBar1.add(jMenu2);
 
